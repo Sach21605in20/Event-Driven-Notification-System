@@ -1,6 +1,6 @@
 PLAN.md
 .idea/
-notifyflow/**/target/
+**/target/
 *.iml
 out/
 .vscode/
