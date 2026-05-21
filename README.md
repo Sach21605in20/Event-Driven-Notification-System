@@ -228,29 +228,15 @@ elapsed=$(( (end_time - start_time) / 1000000 ))
 echo "100 events processed in ${elapsed}ms"
 ```
 
-**Measured result:**
-
-```
-100 events processed in 450ms
-```
-
 **Screenshot:**
 
 ![Terminal output showing 100 events processed with timing](docs/proof/06-benchmark-100-events.png)
 
 ---
 
-## Proof Folder Structure
-
-Create the following folder structure at the repo root and add screenshots after running the steps above:
+**Measured result:**
 
 ```
-docs/
-└── proof/
-    ├── 01-post-event-success.png
-    ├── 02-processor-flow-logs.png
-    ├── 03-websocket-live-delivery.png
-    ├── 04-history-endpoint.png
-    ├── 05-retry-dlq-proof.png
-    └── 06-benchmark-100-events.png
+100 events processed in 450ms
 ```
+
