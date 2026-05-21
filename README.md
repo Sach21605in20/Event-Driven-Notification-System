@@ -181,9 +181,3 @@ Kafka handles event stream ingestion and decoupling. RabbitMQ handles delivery p
 - Contract-safe JSON flow:
 Cross-service type headers were disabled to avoid class-coupled deserialization (`EventRequest` class mismatch across services).
 
-## Resume Bullets
-
-- Architected an event-driven notification system across 3 decoupled microservices using Kafka for event streaming and RabbitMQ for guaranteed delivery with retry and dead-letter handling.
-- Implemented real-time in-app notification delivery via Spring WebSocket (STOMP), processing 100 events in `1052ms` end-to-end during local benchmark validation.
-- Containerized the full stack with Docker Compose, enabling one-command deployment of Kafka, Zookeeper, RabbitMQ, PostgreSQL, and all application services.
-- Designed resilient consumer flow with exponential backoff and DLQ fallback, preventing silent loss during transient processing failures.
