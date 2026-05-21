@@ -24,4 +24,12 @@ public class RabbitMQConsumer {
         messagingTemplate.convertAndSend("/topic/notifications/" + userId, notification);
         log.info("Notification delivered via WebSocket to userId={}", userId);
     }
+
+    @RabbitListener(queues = "${rabbitmq.dlq}")
+    public void handleDeadLetter(Map<String, Object> notification) {
+        String userId = (String) notification.get("userId");
+        log.error("DEAD LETTER: Notification permanently failed after retries. userId={}, notification={}",
+                userId, notification);
+        // In production: alert ops team, store failure record, etc.
+    }
 }
