@@ -1,4 +1,4 @@
-# NotifyFlow — Event-Driven Notification System
+# Event-Driven Notification System
 
 An event-driven notification platform built with 3 Spring Boot microservices.
 
@@ -254,7 +254,7 @@ echo "100 events processed in ${elapsed}ms"
 **Measured result:**
 
 ```
-100 events processed in 1052ms
+100 events processed in 450ms
 ```
 
 **Screenshot:**
