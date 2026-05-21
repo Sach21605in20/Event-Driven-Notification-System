@@ -209,30 +209,7 @@ curl http://localhost:8083/api/notifications/user-1
 
 ---
 
-### Claim 5 — Retry and dead-letter queue are active and observable
-
-**Steps to reproduce:**
-1. Temporarily add `throw new RuntimeException("simulated failure");` as the first line of `RabbitMQConsumer.consume()`.
-2. Rebuild: `docker compose up --build notification-gateway`
-3. Send one POST event.
-4. Watch `notification-gateway` logs — confirm 3 retry attempts followed by the DLQ handler.
-5. Remove the exception and rebuild.
-
-**Expected log output:**
-```
-[attempt 1] Listener method threw exception
-[attempt 2] Listener method threw exception
-[attempt 3] Listener method threw exception
-DEAD LETTER: Notification permanently failed after retries. userId=user-1
-```
-
-**Screenshot:**
-
-![notification-gateway logs showing 3 retry attempts then dead-letter handler firing](docs/proof/05-retry-dlq-proof.png)
-
----
-
-### Claim 6 — Throughput benchmark: 100 events processed
+### Claim 5 — Throughput benchmark: 100 events processed
 
 **Steps to reproduce:**
 Run this script in your terminal with all services running:
