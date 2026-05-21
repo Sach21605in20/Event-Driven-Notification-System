@@ -1,3 +1,11 @@
 PLAN.md
 .idea/
 notifyflow/**/target/
+*.iml
+out/
+.vscode/
+*.log
+*.tmp
+*.swp
+Thumbs.db
+.DS_Store
