@@ -1,0 +1,42 @@
+server:
+  port: 8082
+
+spring:
+  kafka:
+    bootstrap-servers: ${SPRING_KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    consumer:
+      group-id: notification-processor-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
+
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/notifyflow}
+    username: ${SPRING_DATASOURCE_USERNAME:notifyflow}
+    password: ${SPRING_DATASOURCE_PASSWORD:notifyflow123}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+  rabbitmq:
+    host: ${SPRING_RABBITMQ_HOST:localhost}
+    port: 5672
+    username: guest
+    password: guest
+
+rabbitmq:
+  exchange: notifications.exchange
+  queue: notifications.queue
+  routing-key: notifications.key
+  dlq: notifications.dlq
+  dlq-routing-key: notifications.dlq.key
+
+kafka:
+  topic:
+    notification-events: notification.events
