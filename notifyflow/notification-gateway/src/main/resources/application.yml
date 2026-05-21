@@ -1,0 +1,27 @@
+server:
+  port: 8083
+
+spring:
+  rabbitmq:
+    host: ${SPRING_RABBITMQ_HOST:localhost}
+    port: 5672
+    username: guest
+    password: guest
+
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/notifyflow}
+    username: ${SPRING_DATASOURCE_USERNAME:notifyflow}
+    password: ${SPRING_DATASOURCE_PASSWORD:notifyflow123}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+rabbitmq:
+  exchange: notifications.exchange
+  queue: notifications.queue
+  routing-key: notifications.key
+  dlq: notifications.dlq
+  dlq-routing-key: notifications.dlq.key
